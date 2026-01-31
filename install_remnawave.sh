@@ -348,13 +348,6 @@ EOF
         return 1
     fi
     
-    if ! ping -c 1 "$CERT_DOMAIN" &>/dev/null; then
-        echo -e "${BOLD_RED}Error: Domain '$CERT_DOMAIN' does not resolve. Please enter a valid public domain.${NC}"
-        echo -e "\n${ORANGE}Press Enter to try again or return to the main menu...${NC}"
-        read
-        return 1
-    fi
-    
     fuser -k 8443/tcp 2>/dev/null || true
     
     if ! command -v acme.sh &>/dev/null; then
@@ -873,3 +866,4 @@ validate_numeric_id() {
 }
 
 main
+
